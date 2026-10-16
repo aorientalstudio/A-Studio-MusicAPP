@@ -1,0 +1,19 @@
+{
+  "name": "A STUDIO · أورغ شرقي",
+  "short_name": "A STUDIO",
+  "description": "تعلّم النوتة والعزف مع ربع التون — By. Ayman Abohelal",
+  "lang": "ar",
+  "dir": "rtl",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0c192a",
+  "theme_color": "#1f2430",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
