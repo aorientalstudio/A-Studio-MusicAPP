@@ -1,7 +1,7 @@
 /* A STUDIO — service worker.
    Only the app shell (this page + icons) is kept, so the app opens fast and shows a clear
    "no internet" state. Songs and notes come from the server and are never stored here. */
-const V = 'astudio-v2';
+const V = 'astudio-v4';
 const SHELL = ['./', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -17,7 +17,7 @@ self.addEventListener('fetch', e => {
   if (u.origin !== self.location.origin) return;          // server, fonts, CDN: straight to the network
   if (r.mode === 'navigate') {                            // the page: always the newest copy, cache only as fallback
     e.respondWith(fetch(r).then(res => {
-      const cp = res.clone(); caches.open(V).then(c => c.put('./', cp)); return res;
+      if (res.ok && /\/(index\.html)?$/.test(u.pathname)) { const cp = res.clone(); caches.open(V).then(c => c.put('./', cp)); } return res;
     }).catch(() => caches.match('./')));
     return;
   }
